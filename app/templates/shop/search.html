@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+{% import 'macro.html' as macro %}
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>商品名</th>
+        <th>价格</th>
+        <th>注册时间</th>
+        <th>保质期</th>
+        <th>状态码</th>
+        <th>选项</th>
+    </tr>
+    {% for shop in shops %}
+        <tr>
+            <td>{{ shop.sid }}</td>
+            <td>{{ shop.name }}</td>
+            <td>{{ shop.price }}</td>
+            <td>{{ shop.create_time }}</td>
+            <td>{{ shop.expiration_date }}</td>
+            <td>{{ shop.status }}</td>
+            <td>
+                <a href="#">添加</a>
+                <a href="#">修改</a>
+                <a href="#">删除</a>
+            </td>
+            <td></td>
+        </tr>
+    {% endfor %}
+</table>
+
+{% if paginate %}
+    <div>
+        {{ macro.pagination(paginate,'shop.query_limit') }}
+    </div>
+{% endif %}
+<div>
+    <form action="{{ url_for('shop.search_shop') }}" method="post">
+        <input type="text" name="content" placeholder="请输入商品名">
+        <input type="submit" value="搜索">
+    </form>
+</div>
+</body>
+</html>

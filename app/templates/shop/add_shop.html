@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="{{ url_for('shop.add_shop', sid=shop.sid) }}" method="post">
+    <input type="hidden" name="sid" value="{{ shop.sid }}">
+    <input type="text" name="name" value="{{ shop.name }}">商品名<br>
+    <input type="text" name="price" value="{{ shop.price }}">商品价格<br>
+    <input type="text" name="expiration_date" value="{{ shop.expiration_date }}">保质期<br>
+    <input type="text" name="status" value="{{ shop.status }}">状态<br>
+    <input type="submit" value="提交">
+</form>
+</body>
+</html>
